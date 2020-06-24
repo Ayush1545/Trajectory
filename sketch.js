@@ -1,5 +1,6 @@
+gameState = "onSling"
 const Engine = Matter.Engine;
-const World= Matter.World;
+const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
@@ -69,12 +70,17 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState === "onSling"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+
+    }
+   
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launched"
 }
 
 function keyPressed(){
